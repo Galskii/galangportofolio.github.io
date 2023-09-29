@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portofolio</title>
+    <link href="dist/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <!-- Navbar Section Start -->
+    <header>
+        <nav class="fixed p-5 bg-white shadow md:flex md:items-center md:justify-between left-0 right-0">
+            <div class="flex justify-between items-center">
+                <span class="text-2xl font-semibold cursor-pointer">
+                    <img class="h-10 inline"src="dist/img/daun.png" alt="logo">
+                    Galang Rahjasa
+                </span>
+
+                <span class="text-3xl cursor-pointer mx-2 md:hidden block">
+                    <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+                </span>
+            
+            </div>
+
+            <ul class="md:flex md:items-center z-[1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
+                <li class="mx-4 my-6 md:my-0">
+                    <a href="#home" class="text-xl hover:text-green-500 duration-300 ease-in-out">Home</a>
+                </li>
+                <li class="mx-4 my-6 md:my-0">
+                    <a href="#about" class="text-xl hover:text-green-500 duration-300 ease-in-out">About Me</a>
+                </li>
+                <li class="mx-4 my-6 md:my-0">
+                    <a href="#school" class="text-xl hover:text-green-500 duration-300 ease-in-out">School</a>
+                </li>
+                <li class="mx-4 my-6 md:my-0">
+                    <a href="#experience" class="text-xl hover:text-green-500 duration-300 ease-in-out">Experience</a>
+                </li>
+                <li class="mx-4 my-6 md:my-0">
+                    <a href="#portofolio" class="text-xl hover:text-green-500 duration-300 ease-in-out">Project</a>
+                </li>
+
+                <a href="#contact" class="text-base font-semibold text-white bg-green-400 py-3 px-8 hover:shadow-lg hover:bg-green-500 transition duration-300 ease-in-out">
+                    Contact Me
+                </a>
+            </ul>
+        </nav>
+        <script>
+            function Menu(e){
+              let list = document.querySelector('ul');
+              e.name === 'menu' ? (e.name = "close",list.classList.add('top-[80px]') , list.classList.add('opacity-100')) :( e.name = "menu" ,list.classList.remove('top-[80px]'),list.classList.remove('opacity-100'))
+            }
+        </script>
+    </header>
+    <!-- Navbar Section End -->
+    <!-- Hero Start -->
+    <section id="home" class="pt-36 bg-orange-50">
+        <div class="container">
+            <div class="flex flex-wrap">
+                <div class="w-full self-center px-4 lg:w-1/2">
+                    <h1 class="text-base font-semibold text-green-500 mb-5 md:text-xl">Heyoo Guys,🙌 <span class="block font-bold text-slate-900 text-4xl mt-1 lg:text-5xl">Galang Rahjasa</span></h1>
+                    <h2 class="font-medium text-slate-900 text-lg mb-5 mt-1 lg:text-2xl">Mahasiswa <span class="font-medium text-blue-900">Universitas Pendidikan Ganesha</span></h2>
+                    <p class="font-medium text-slate-700 mb-10 leading-relaxed">Ini adalah portofolio web saya👌</p>
+                    <a href="#about" class="text-base font-semibold text-white bg-green-400 py-3 px-8 rounded-2xl hover:shadow-lg hover:bg-green-500 transition duration-300 ease-in-out">About Me</a>
+                </div>
+                <div class="w-full self-end px-4 lg:w-1/2">
+                    <div class="mt-10 lg:mt-0 lg:right-0">
+                        <img src="dist/img/galang.png" alt="Galang Rahjasa" class="max-w-full mx-auto shadow-lg rounded-full"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero End -->
+    <!-- Description Section Start -->
+    <section id="Description" class="pt-10 pb-10 lg:pt-36 lg:pb-32 bg-orange-100">
+        <div class="container">
+            <div class="flex flex-wrap">
+                <div class="w-full px-4 lg:w-1/2 lg:px-0">
+                    <h3 class="font-bold uppercase mb-3 text-lg lg:text-xl text-green-500">Deskripsi Web</h3>
+                    <h4 class="font-bold text-dark text-2xl lg:text-3xl mb-3 max-w-xl">Apa aja sih isi web ini?</h4>
+                    <p class="font-medium text-base lg:text-lg text-justify">Hai, jadi ini merupakan project portofolio website pertama saya. Pada portofolio website ini akan berisi tentang biografi singkat saya, seperti identitas diri, hobi, riwayat sekolah, pengalaman organisasi dan masih banyak lagi 😁</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Description Section end -->
+    <!-- About Me Section Start -->
+    <section id="about" class="py-10 lg:py-20 bg-green-200">
+        <div class="container mx-auto">
+            <div class="bg-white shadow-lg p-6 rounded-lg">
+                <div class="flex items-center">
+                    <svg class="stroke-orange-600 stroke-2 h-6 w-6">
+                        <line x1="0" y1="10px" x2="24px" y2="10px"></line>
+                    </svg>
+                    <h4 class="uppercase text-sm font-bold ml-2">About Me</h4>
+                </div>
+                <p class="mt-4 text-justify text-gray-700">
+                    I Putu Galang Januarta Rahjasa, nama yang diberikan kepada saya, berasal dari Bali, lebih tepatnya di kota Singaraja. Saya adalah anak pertama dari tiga bersaudara dalam keluarga saya. Saya lahir pada bulan Januari tahun 2004, yang berarti saat ini, saya telah mencapai usia 19 tahun. Saat ini sayang sedang berkuliah di salah satu kampus yang ada di Bali yaitu Universitas Pendidikan Ganesha, mengambil jurusan Teknik Informatika dengan program studi <span class="font-bold text-blue-600">Ilmu Komputer</span>. Salah satu hobi yang saya nikmati saat ini adalah bermain game, yang membawa saya ke dunia virtual yang menarik, dan juga bermain futsal, yang memberi kesenangan dan kebugaran dalam olahraga.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- About Me Section end -->
+    <!-- School Section Start -->
+    <section id="school" class="bg-slate-50 pt-20 pb-20">
+			<div class="w-9/12 mx-auto">
+				<div class="flex flex-col place-items-center">
+					<div>
+						<h3 class="text-1xl sm:text-2xl md:text-3xl"><span class="font-extrabold">Educational</span> <span class="font-extralight">Background</span></h3>
+					</div>
+				</div>
+				<div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5 py-10">
+					<div class="rounded-lg bg-white shadow-lg mb-5">
+						<div class="flex flex-col items-center py-10 px-10">
+							<div class="h-10 w-10 p-2 bg-blue-100 rounded-2xl">
+								<img class="w-full" src="dist/img/sd.png" alt=""/>
+							</div>
+							<h4 class="text-black font-semibold mt-5 text-sm lg:text-2xl">
+								SD Paket Agung
+							</h4>
+							<p class="text-center font-extralight text-sm mt-2 text-gray">
+								Saya menempuh pendidikan sekolah dasar di SD Paket Agung pada tahun 2011-2016
+							</p>
+						</div>
+					</div>
+					<div class="rounded-lg bg-white shadow-lg mb-5">
+						<div class="flex flex-col items-center py-10 px-10">
+							<div class="h-10 w-10 p-2 bg-blue-100 rounded-2xl">
+								<img class="w-full" src="dist/img/smp.png" alt="">
+							</div>
+							<h4 class="text-black font-semibold mt-5 text-sm lg:text-2xl">
+								SMPN 1 Singaraja
+							</h4>
+							<p class="text-center font-extralight text-sm mt-2 text-gray">
+								Saya menempuh pendidikan sekolah menengah pertama di SMPN 1 Singaraja pada tahun 2016-2019
+							</p>
+						</div>
+					</div>
+					<div class="rounded-lg bg-white shadow-lg mb-5">
+						<div class="flex flex-col items-center py-10 px-10">
+							<div class="h-10 w-10 p-2 bg-blue-100 rounded-2xl">
+								<img class="w-full" src="dist/img/sma.png" alt="">
+							</div>
+							<h4 class="text-black mt-5 text-sm lg:text-2xl font-semibold">
+								SMAN 1 Singaraja
+							</h4>
+							<p class="text-center font-extralight text-sm mt-2 text-gray">
+								Saya menempuh pendidikan sekolah menengah atas di SMAN 1 Singaraja pada tahun 2019-2022
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+    </section>
+    <!-- School Section end -->
+    <!-- Experience Section Start -->
+        <div id="experience" class="experience py-16 bg-slate-300">
+            <div class="container mx-auto px-4">
+                <div class="experience-box">
+                    <div class="box text-center">
+                        <h1 class="font-extrabold text-4xl mb-6">Experience</h1>
+                        <p class="md:w-3/4 w-full mx-auto md:text-base sm:text-xl text-xs">Pengalaman Berorganisasi Disekolah</p>
+                    </div>
+                    <div class="box grid md:grid-cols-2 grid-cols-1 gap-16 pt-16 items-center">
+                        <img src="dist/img/sispala.jpg" alt="" class="w-[200px] lg:w-[400px] md:justify-self-end lg:mr-20 justify-self-center rounded-2xl shadow-lg mb-5"/>
+                        <div class="desc md:justify-self-start justify-self-center">
+                            <p class="lg:text-xl text-sm flex items-center gap-4 lg:mr-10 font-bold mb-6 text-justify">Pada saat masih berstatus pelajar sekolah menengah atas (SMA) saya pernah mengikuti organisasi kepecinta alaman. Organisasi yang bernama Siswa Pencinta Alam Mandala Bhakti Tama dan saya sempat mendapat pengalaman menjadi salah satu pengurus organisasi tersebut tepatnya sebagai ketua.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Experience Section End -->
+    <!-- Portfolio Section Start -->
+    <section id="portofolio" class="pt-12 pb-32 bg-green-100">
+        <div class="container">
+            <div class="w-full px-4">
+                <div class="max-w-xl mx-auto text-center">
+                    <h4 class="font-semibold text-lg mb-2 text-green-500">Portofolio</h4>
+                    <h5 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl">Project</h5>
+                    <div class="rounded-full bg-white shadow-lg mb-5 mt-10 transition duration-300 ease-in-out hover:scale-110">
+                        <div class="flex flex-col items-center py-10 px-10">
+                            <img class="w-40 sm:max-w-[50px] md:max-w-[100px] lg:max-w-[200px]" src="dist/img/cleannow.jpg" alt="">
+                            <button class="mt-5 inline-flex py-2 px-6 bg-green-100 hover:shadow-lg hover:bg-green-300 transition duration-300 ease-in-out rounded-full"><a class="btn btn-icon btn-figma" href="https://www.figma.com/proto/hBMi1sqZkYSOms7H4eqxEd/HCI-CLEANOIW?type=design&node-id=134-191&t=OQ809Vdpn40umqwq-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=324%3A2820&show-proto-sidebar=1" target="_blank"><i class="fab fa-figma mr-1"></i></a></button>
+                        </div>
+                    </div>
+                    <p class="mt-20 font-medium text-md md:text-lg text-justify-center"> Saya pernah membuat design aplikasi laundry online yang dimana saya juga mengerjakannya berkolompok dengan teman-teman saya</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Portfolio Section End -->
+    <!-- Contact Section Start -->
+    <section id="contact" class="text-gray-600 body-font realtive pt-20 pb-20">
+        <div class="container px-5 py-4 mx-auto">
+            <div class="flex flex-col text-center w-full mb-8">
+                <h2 class="text-2xl lg:text-3xl text-center font-bold underline text-black font-extrabold">Contact</h2>
+                <p class="md:w-3/4 w-full mx-auto md:text-base sm:text-xl text-xs mt-5">Media Sosial Yang Dapat Dihubungi</p>
+            </div>
+            <div class="social-platform flex justify-center space-x-4" class="justify-center">
+                <div class="justify-center grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5 py-10">
+                    <button class="inline-flex py-2 px-6 bg-red-300 hover:shadow-lg hover:bg-red-400 transition duration-300 ease-in-out rounded-full"><a class="btn btn-icon btn-instagram" href="https://instagram.com/galangjanuarta_?igshid=MzMyNGUyNmU2YQ==" target="_blank"><i class="fab fa-instagram mr-1"></i><span class="lg:text-xl">Instagram</span></a></button>
+                    <button class="inline-flex py-2 px-6 bg-slate-400 hover:shadow-lg hover:bg-slate-300 transition duration-300 ease-in-out rounded-full"><a class="btn btn-icon btn-github" href="https://github.com/Galskii" target="_blank"><i class="fab fa-github mr-1"></i><span class="ml-2 lg:text-xl">Github</span></a></button>
+                    <button class="inline-flex py-2 px-6 bg-yellow-500 hover:shadow-lg hover:bg-yellow-300 transition duration-300 ease-in-out rounded-full"><a class="btn btn-icon btn-google" href="mailto:galang@student.undiksha.ac.id" target="_blank"><i class="fab fa-google mr-1"></i><span class="ml-2 lg:text-xl">Email</span></a></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section End -->
+    <!-- Footer Section Start -->
+    <footer class="bg-gray-700 text-white py-4">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2023 Galang Rahjasa </p>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+</body>
+</html>
