@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Manajemen Laundry</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="pt-10 pb-10">
+  <header>
+    <nav class="fixed p-5 bg-white shadow md:flex md:items-center md:justify-between top-0 left-0 right-0 navbar">
+      <div class="flex justify-between items-center">
+        <span class="text-2xl font-semibold cursor-pointer">
+          <img class="h-10 inline" src="dist/img/daun.png" alt="logo">
+          Galang Rahjasa
+        </span>
+      </div>
+      <ul class="md:flex md:items-center z-[1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
+        <li class="mx-4 my-6 md:my-0">
+          <a href="index.html" class="text-base font-semibold text-white bg-green-400 py-3 px-8 hover:shadow-lg hover:bg-green-500 transition duration-300 ease-in-out">Home</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <h1 class="text-2xl font-semibold mb-4 text-center pt-20">Pemesanan Laundry<span class="text-green-500"> GIGAClean</span></h1>
+  <div id="app" class="container mx-auto p-4 pt-20 w-full">
+    <div class="grid grid-cols-3 gap-4">
+      <div v-for="(item, index) in items" :key="index" class="text-center">
+        <img @click="toggleItem(index)" :src="item.image" class="cursor-pointer mb-2 mx-auto w-[150px] h-[150px] shadow-lg rounded-full hover:shadow-lg transition hover:shadow-green-500 duration-300 ease-in-out hover:bg-green-500 hover:scale-110" alt="Item" >
+        <p class="font-semibold">{{ item.name }}</p>
+        <p>Rp {{ item.price }}</p>
+      </div>
+    </div>
+
+  <section class="border-[4px] rounded-2xl border-green-500 px-3 mt-10">
+    <div class="mt-4 pt-2 text-center mx-auto">
+      <h2 class="text-lg font-semibold">Barang yang Dipilih :</h2>
+      <ul>
+        <li v-for="(selectedItem, index) in selectedItems" :key="index" class="mb-2 border">
+          {{ selectedItem.name }} - Jumlah : {{ selectedItem.quantity }}
+          <button @click="deleteItem(index)" class="text-red-600 ml-2">Hapus Pesanan</button>
+        </li>
+      </ul>
+      <div class="mt-2">
+        <label for="editTotal" class="block text-sm font-medium text-gray-600">Layanan :</label>
+        <select v-model="service" class="border border-green-500 rounded py-2 px-3 mt-1">
+          <option value="Laundry">Laundry</option>
+          <option value="Setrika">Setrika</option>
+        </select>
+      </div>
+      <div class="mt-2">
+        <label for="editTotal" class="block text-sm font-medium text-gray-600">Total Harga :</label>
+        <input type="number" id="editTotal" v-model="total" class="w-auto border border-green-500 rounded py-2 px-3 mt-2 text-center" readonly>
+      </div>
+      <div>
+        <button @click="saveOrder" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-300 ease-in-out mt-4">Simpan Pesanan</button>
+      </div>
+      <button @click="showOrders" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300 ease-in-out mt-4 mb-2">Tampilkan Pesanan</button>
+    </div>
+  </section>
+  <section>
+    <table class="mt-8 w-full" v-if="showingOrders">
+      <thead>
+        <tr>
+          <th class="border px-4 py-2">Nama Barang</th>
+          <th class="border px-4 py-2">Harga</th>
+          <th class="border px-4 py-2">Jumlah</th>
+          <th class="border px-4 py-2">Layanan</th>
+          <th class="border px-4 py-2">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(selectedItem, index) in selectedItems" :key="index" class="text-center">
+          <!-- Tambahkan kondisi untuk mode edit -->
+          <td class="border px-4 py-2">{{ selectedItem.name }}</td>
+          <td class="border px-4 py-2">Rp {{ selectedItem.price }}</td>
+          <td class="border px-4 py-2">
+            <div class="flex mx-auto justify-center">
+            <button @click="decrementQuantity(index)" class="text-black mr-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </button>
+            <p class="mr-2">{{ selectedItem.quantity }}</p>
+            <button @click="incrementQuantity(index)" class="text-black">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg> 
+            </button>
+          </div>
+          </td>
+          <td class="border px-4 py-2">{{ selectedItem.service }}</td>
+          <td class="border px-4 py-2">
+            <button @click="deleteOrder(index)" class="text-red-600">Hapus</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        items: [
+          { name: 'Baju', price: 1000, image: 'dist/img/baju.jpg' },
+          { name: 'Celana', price: 1000, image: 'dist/img/celana.jpg' },
+          { name: 'Jaket', price: 5000, image: 'dist/img/jaket.jpg' },
+          { name: 'Sprei', price: 10000, image: 'dist/img/sprei.jpg' },
+          { name: 'Topi', price: 2000, image: 'dist/img/topi.jpg' },
+          { name: 'Jeans', price: 15000, image: 'dist/img/jeans.jpg' }
+        ],
+        selectedItems: [],
+        total: 0,
+        service: 'Laundry',
+        showingOrders: false, 
+        editingIndex: -1,
+        editedItem: {
+        name: '',
+        price: 0,
+        quantity: 1, // Default quantity saat menambahkan item baru
+      },
+      },
+      methods: {
+        toggleItem: function(index) {
+          const selectedItem = this.items[index];
+          const existingItem = this.selectedItems.find(item => item.name === selectedItem.name);
+          if (existingItem) {
+            existingItem.quantity++;
+          } else {
+            this.selectedItems.push({ ...selectedItem, quantity: 1, service: this.service });
+          }
+          this.updateTotal();
+        },
+        computed: {
+          // Daftar item yang tersedia untuk dipilih dalam dropdown "Nama Barang"
+          availableItems: function() {
+          return this.items.map(item => item.name);
+         },
+        },
+        decrementQuantity: function(index) {
+            const selectedItem = this.selectedItems[index];
+            if (selectedItem.quantity > 1) {
+            selectedItem.quantity--;
+           }
+          this.updateTotal();
+        },
+        incrementQuantity: function(index) {
+          const selectedItem = this.selectedItems[index];
+          selectedItem.quantity++;
+          this.updateTotal();
+        },
+        saveOrder: function() {
+          alert('Pesanan berhasil disimpan!');
+        },
+        updateTotal: function() {
+          this.total = this.selectedItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+        },
+        showOrders: function() {
+          this.showingOrders = !this.showingOrders; // Menampilkan pesanan
+        },
+        saveOrder: function() {
+          alert('Pesanan berhasil disimpan!');
+        },
+        deleteItem: function(index) {
+          const selectedItem = this.selectedItems[index];
+          if (selectedItem.quantity > 1) {
+            selectedItem.quantity--;
+          } else {
+            this.selectedItems.splice(index, 1);
+          }
+          this.updateTotal();
+        },
+        deleteOrder: function(index) {
+          if (confirm('Apakah Anda yakin ingin menghapus pesanan ini?')) {
+            this.selectedItems.splice(index, 1);
+            this.updateTotal();
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
